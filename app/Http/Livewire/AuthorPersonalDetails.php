@@ -38,6 +38,9 @@ class AuthorPersonalDetails extends Component
 
         $this->emit('updateAuthorProfileHeader');
         $this->emit('updateTopHeader');
+
+
+        $this->emit('show-toast', ['message' => 'Thông tin đã được cập nhật thành công!']);
     }
 
     public function render()
