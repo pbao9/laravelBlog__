@@ -11,10 +11,10 @@
             <h2 class="h2 text-center mb-4">ĐĂNG NHẬP</h2>
             <form action="./" method="post" autocomplete="off" novalidate="" wire:submit.prevent="LoginHandler()">
                 <div class="mb-3">
-                    <label class="form-label">Địa chỉ emai</label>
+                    <label class="form-label">Địa chỉ email & Tên đăng nhập</label>
                     <input type="email" class="form-control" placeholder="nguyenvana@gmail.com" autocomplete="off"
-                        wire:model="email">
-                    @error('email')
+                        wire:model="login_id">
+                    @error('login_id')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
