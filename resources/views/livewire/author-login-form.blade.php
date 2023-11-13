@@ -26,8 +26,9 @@
                         </span>
                     </label>
                     <div class="input-group input-group-flat">
-                        <input type="password" class="form-control" placeholder="Your password" autocomplete="off" wir
-                            e:model="password">
+                        <input type="password" class="form-control" placeholder="Your password" autocomplete="off"
+                            wire:model="password">
+
                         <span class="input-group-text">
                             <a h ref="#" class="link-secondary" data-bs-toggle="tooltip"
                                 aria-label="Show password"
@@ -43,6 +44,7 @@
                                 </svg>
                             </a>
                         </span>
+
                     </div>
                     @error('password')
                         <span class="text-danger">{{ $message }}</span>

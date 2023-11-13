@@ -14,7 +14,7 @@ class AuthorLoginForm extends Component
     public function LoginHandler()
     {
         $this->validate([
-            'email' => 'required|email|exists:user,mail',
+            'email' => 'required|email|exists:users,email',
             'password' => 'required|min:5'
         ], [
             'email.required' => 'Nhập địa chỉ email của bạn!',
@@ -26,9 +26,10 @@ class AuthorLoginForm extends Component
         $creds = array('email' => $this->email, 'password' => $this->password);
         if (Auth::guard('web')->attempt($creds)) {
             $checkUser = User::where('email', $this->email)->first();
+
             if ($checkUser->blocked == 1) {
                 Auth::guard('web')->logout();
-                return redirect()->route('author.home')->with('fail', 'Acc của bnạ đã bị khoá!');
+                return redirect()->route('author.login')->with('fail', 'Acc của bạn đã bị khoá!');
             } else {
                 return redirect()->route('author.home');
             }
