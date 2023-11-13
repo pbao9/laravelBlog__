@@ -53,7 +53,7 @@
                 gravity: 'top',
                 position: 'right',
                 stopOnFocus: true,
-                backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+                backgroundColor: 'linear-gradient(to right, #a8ff78, #78ffd6)',
                 className: 'info',
             }).showToast();
         });
