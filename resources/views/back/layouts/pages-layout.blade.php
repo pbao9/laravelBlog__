@@ -25,6 +25,8 @@
         integrity="sha512-8D+M+7Y6jVsEa7RD6Kv/Z7EImSpNpQllgaEIQAtqHcI0H6F4iZknRj0Nx1DCdB+TwBaS+702BGWYC0Ze2hpExQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+    <link rel="icon" href="./back/static/logo.ico">
     @stack('stylesheets')
     @livewireStyles
     <link href="../back/css/demo.min.css?1684106062" rel="stylesheet" />
