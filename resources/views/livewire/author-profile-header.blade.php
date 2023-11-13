@@ -2,7 +2,7 @@
     <div class="page-header">
         <div class="row align-item-center">
             <div class="col-auto">
-                <span class="avatar avatar-md" style="background-image: url(....)"></span>
+                <span class="avatar avatar-md" style="background-image: url({{ $author->picture }})"></span>
             </div>
             <div class="col-md-6">
                 <h2 class="page-title">

@@ -28,12 +28,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
 @endsection
