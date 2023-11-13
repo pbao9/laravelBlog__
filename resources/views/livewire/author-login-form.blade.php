@@ -8,11 +8,11 @@
 
     <div class="card card-md">
         <div class="card-body">
-            <h2 class="h2 text-center mb-4">Login to your account</h2>
+            <h2 class="h2 text-center mb-4">ĐĂNG NHẬP</h2>
             <form action="./" method="post" autocomplete="off" novalidate="" wire:submit.prevent="LoginHandler()">
                 <div class="mb-3">
-                    <label class="form-label">Email address</label>
-                    <input type="email" class="form-control" placeholder="your@email.com" autocomplete="off"
+                    <label class="form-label">Địa chỉ emai</label>
+                    <input type="email" class="form-control" placeholder="nguyenvana@gmail.com" autocomplete="off"
                         wire:model="email">
                     @error('email')
                         <span class="text-danger">{{ $message }}</span>
@@ -20,14 +20,15 @@
                 </div>
                 <div class="mb-2">
                     <label class="form-label">
-                        Password
+                        Mật khẩu
                         <span class="form-label-description">
-                            <a href="{{ route('author.forgot-password') }}">I forgot password</a>
+                            <a href="{{ route('author.forgot-password') }}">Quên mật khẩu</a>
                         </span>
                     </label>
                     <div class="input-group input-group-flat">
-                        <input type="password" class="form-control" placeholder="Your password" autocomplete="off" wir
-                            e:model="password">
+                        <input type="password" class="form-control" placeholder="Mật khẩu" autocomplete="off"
+                            wire:model="password">
+
                         <span class="input-group-text">
                             <a h ref="#" class="link-secondary" data-bs-toggle="tooltip"
                                 aria-label="Show password"
@@ -43,6 +44,7 @@
                                 </svg>
                             </a>
                         </span>
+
                     </div>
                     @error('password')
                         <span class="text-danger">{{ $message }}</span>
@@ -51,16 +53,13 @@
                 <div class="mb-2">
                     <label class="form-check">
                         <input type="checkbox" class="form-check-input">
-                        <span class="form-check-label">Remember me on this device</span>
+                        <span class="form-check-label">Ghi nhớ trên thiết bị này</span>
                     </label>
                 </div>
                 <div class="form-footer">
-                    <button type="submit" class="btn btn-primary w-100">Sign in</button>
+                    <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
                 </div>
             </form>
         </div>
-    </div>
-    <div class="text-center text-muted mt-3">
-        Don't have account yet? <a href="./sign-up.html" tabindex="-1">Sign up</a>
     </div>
 </div>
