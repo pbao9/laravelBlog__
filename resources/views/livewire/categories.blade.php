@@ -22,16 +22,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>any name</td>
-                                    <td>4</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                                            <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @forelse ($categories as $category)
+                                    <tr>
+                                        <td>{{ $category->category_name }}</td>
+                                        <td class="text-muted">
+                                            {{ $category->subcategories->count() }}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-sm btn-primary"data-bs-toggle="modal"
+                                                    data-bs-target="#categories_modal"
+                                                    wire:click.prevent='editCategory({{ $category->id }})'>Chinh sua</a>
+                                                <a href="#" class="btn btn-sm btn-danger">Xoa</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3"><span class="text-danger">Khong co danh muc de hien
+                                                thi</span></td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -82,24 +93,37 @@
     </div>
 
 
-    <div class="modal modal-blur fade" id="categories_modal" tabindex="-1" role="dialog" aria-hidden="true"
-        data-bs-backdrop="static" data-bs-keyboard="false">
+    <div wire:ignore.self class="modal modal-blur fade" id="categories_modal" tabindex="-1" role="dialog"
+        aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <form class="modal-content" method="POST">
+            <form class="modal-content" method="POST"
+                @if ($updateCategoryMode) wire:submit.prevent='updateCategory()'
+            @else
+            wire:submit.prevent='addCategory' @endif>
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Category</h5>
+                    <h5 class="modal-title">{{ $updateCategoryMode ? 'Update Category' : 'Add Category' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    @if ($updateCategoryMode)
+                        <input type="hidden" wire:model='selected_category_id'>
+                    @else
+                    @endif
                     <div class="mb-3">
                         <label for="" class="form-label">Category name</label>
                         <input type="text" class="form-control" name="example-text-input"
-                            placeholder="Enter category name">
+                            placeholder="Enter category name" wire:model='category_name'>
+                        <span class="text-danger">
+                            @error('category_name')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="btn me-auto">Close</button>
+                    <button type="submit"
+                        class="btn btn-primary">{{ $updateCategoryMode ? 'Update' : 'Save' }}</button>
                 </div>
             </form>
         </div>
@@ -138,3 +162,19 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('livewire:load', function() {
+        Livewire.on('show-toast', function(data) {
+            Toastify({
+                text: data.message,
+                duration: 3000,
+                gravity: 'top',
+                position: 'right',
+                stopOnFocus: true,
+                backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+                className: 'info',
+            }).showToast();
+        });
+    });
+</script>

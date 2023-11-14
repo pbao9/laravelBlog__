@@ -12,7 +12,18 @@
             </div>
         </div>
     </div>
-
-
     @livewire('categories')
+
+
 @endsection
+
+@push('scripts')
+    <script>
+        window.addEventListener('hideCategoriesModal', function(e) {
+            $('#categories_modal').modal('hide');
+        });
+        window.addEventListener('showcategoriesModal', function(e) {
+            $('#categories_modal').modal('show');
+        });
+    </script>
+@endpush
