@@ -164,7 +164,7 @@
                     <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
                         aria-label="Open user menu">
                         <span class="avatar avatar-sm"
-                            style="background-image: url(./static/avatars/000m.jpg)"></span>
+                            style="background-image: url({{ $author->picture }})"></span>
                         <div class="d-none d-xl-block ps-2">
                             <div>{{ $author->name }}</div>
                             <div class="mt-1 small text-muted">{{ $author->username }}</div>
@@ -184,7 +184,7 @@
                 <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="./">
+                            <a class="nav-link" href="{{ route('author.home') }}">
                                 <span
                                     class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
