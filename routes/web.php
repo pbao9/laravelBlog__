@@ -15,6 +15,7 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/author/home', [AuthorController::class, 'index'])->name('author.home');
     Route::post('/author/logout', [AuthorController::class, 'logout'])->name('author.logout');
     Route::view('/author/profile', 'back.pages.profile')->name('author.profile');
+    Route::view('/categories', 'back.pages.categories')->name('categories');
 });
 
 Route::get('/', function () {
