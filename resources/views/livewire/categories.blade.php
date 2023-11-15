@@ -32,15 +32,15 @@
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-sm btn-primary"data-bs-toggle="modal"
                                                     data-bs-target="#categories_modal"
-                                                    wire:click.prevent='editCategory({{ $category->id }})'>Chinh sua</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Xoa</a>
+                                                    wire:click.prevent='editCategory({{ $category->id }})'>Chỉnh sửa</a>
+                                                <a href="#" class="btn btn-sm btn-danger">Xoá</a>
                                             </div>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="3"><span class="text-danger">Khong co danh muc de hien
-                                                thi</span></td>
+                                        <td colspan="3"><span class="text-danger">Không có danh mục để hiển
+                                                thị</span></td>
                                     </tr>
                                 @endforelse
                             </tbody>

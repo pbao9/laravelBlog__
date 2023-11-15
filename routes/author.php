@@ -15,5 +15,9 @@ Route::prefix('author')->name('author.')->group(function () {
         Route::post('/logout', [AuthorController::class, 'logout'])->name('logout');
         Route::view('/profile', 'back.pages.profile')->name('profile');
         Route::view('/categories', 'back.pages.categories')->name('categories');
+
+        Route::prefix('post')->name('posts.')->group(function () {
+            Route::view('/add-post', 'back.pages.add-post')->name('add-post');
+        });
     });
 });
