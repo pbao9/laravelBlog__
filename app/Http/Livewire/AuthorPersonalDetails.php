@@ -13,6 +13,10 @@ class AuthorPersonalDetails extends Component
 
     public $name, $username, $email, $biography;
 
+    public function toastMsg()
+    {
+        $this->emit('show-toast', ['message' => 'Thông tin đã được cập nhật thành công!']);
+    }
 
     public function mount()
     {
@@ -38,9 +42,7 @@ class AuthorPersonalDetails extends Component
 
         $this->emit('updateAuthorProfileHeader');
         $this->emit('updateTopHeader');
-
-
-        $this->emit('show-toast', ['message' => 'Thông tin đã được cập nhật thành công!']);
+        $this->emit('show-toast', ['message' => 'Đã cập nhật dữ liệu thành công!']);
     }
 
     public function render()

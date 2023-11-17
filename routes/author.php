@@ -17,7 +17,7 @@ Route::prefix('author')->name('author.')->group(function () {
         Route::view('/profile', 'back.pages.profile')->name('profile');
         Route::view('/categories', 'back.pages.categories')->name('categories');
 
-        Route::prefix('post')->name('posts.')->group(function () {
+        Route::prefix('posts')->name('posts.')->group(function () {
             Route::view('/add-post', 'back.pages.add-post')->name('add-post');
             Route::post('/create', [AuthorController::class, 'createPost'])->name('create');
         });

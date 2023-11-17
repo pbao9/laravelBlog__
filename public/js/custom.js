@@ -11,3 +11,8 @@ document.addEventListener("livewire:load", function () {
         }).showToast();
     });
 });
+
+var loadFile = function (event) {
+    var featured_image = document.getElementById("image-preview");
+    featured_image.src = URL.createObjectURL(event.target.files[0]);
+};

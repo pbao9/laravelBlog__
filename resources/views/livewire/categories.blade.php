@@ -77,7 +77,7 @@
                                     @forelse ($subcategories as $subcategory)
                                         <td>{{ $subcategory->subcategory_name }}</td>
                                         <td class="text-muted">{{ $subcategory->parentcategory->category_name }}</td>
-                                        <td>4</td>
+                                        <td>{{ $subcategory->posts->count() }}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"

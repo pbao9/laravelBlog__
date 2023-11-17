@@ -47,9 +47,9 @@ class Categories extends Component
         if ($saved) {
             $this->dispatchBrowserEvent('hideCategoriesModal');
             $this->category_name = null;
-            $this->emit('show-toast', ['message' => 'Da them moi danh muc thanh cong!']);
+            $this->emit('show-toast', ['message' => 'Đã thêm mới danh mục thành công!']);
         } else {
-            $this->emit('show-toast', ['message' => 'Da xay ra loi!']);
+            $this->emit('show-toast', ['message' => 'Đã xảy ra lỗi!']);
         }
     }
 
@@ -79,9 +79,9 @@ class Categories extends Component
             if ($updated) {
                 $this->dispatchBrowserEvent('hideCategoriesModal');
                 $this->updateCategoryMode = false;
-                $this->emit('show-toast', ['message' => 'Da cap nhat thanh cong!']);
+                $this->emit('show-toast', ['message' => 'Đã cập nhật thành công!']);
             } else {
-                $this->emit('show-toast', ['message' => 'Da xay ra loi!']);
+                $this->emit('show-toast', ['message' => 'Đã xảy ra lỗi']);
             }
         }
     }
@@ -103,9 +103,9 @@ class Categories extends Component
             $this->dispatchBrowserEvent('hideSubCategoriesModal');
             $this->parent_category = null;
             $this->subcategory_name = null;
-            $this->emit('show-toast', ['message' => 'Da them danh muc con thanh cong!']);
+            $this->emit('show-toast', ['message' => 'Đã thêm danh mục con thành công!']);
         } else {
-            $this->emit('show-toast', ['message' => 'Da xay ra loi!']);
+            $this->emit('show-toast', ['message' => 'Đã xảy ra lỗi!']);
         }
     }
 
@@ -120,6 +120,8 @@ class Categories extends Component
         $this->resetErrorBag();
         $this->dispatchBrowserEvent('showSubCategoriesModal');
     }
+
+
 
     // public function updateSubCategory()
     // {
