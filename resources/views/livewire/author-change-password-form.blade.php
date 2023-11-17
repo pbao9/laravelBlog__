@@ -43,7 +43,7 @@
 </div>
 
 
-
+{{-- 
 <script>
     document.addEventListener('livewire:load', function() {
         Livewire.on('show-toast-change-password', function(data) {
@@ -58,4 +58,4 @@
             }).showToast();
         });
     });
-</script>
+</script> --}}

@@ -8,7 +8,7 @@ Route::prefix('author')->name('author.')->group(function () {
     Route::middleware(['guest:web'])->group(function () {
         Route::view('/login', 'back.pages.auth.login')->name('login');
         Route::view('/forgot-password', 'back.pages.auth.forgot')->name('forgot-password');
-        Route::get('/password/reset/{token}', [AuthorController::class, 'ResetForm']) -> name('reset-form');
+        Route::get('/password/reset/{token}', [AuthorController::class, 'ResetForm'])->name('reset-form');
     });
 
     Route::middleware(['auth:web'])->group(function () {
@@ -19,6 +19,7 @@ Route::prefix('author')->name('author.')->group(function () {
 
         Route::prefix('post')->name('posts.')->group(function () {
             Route::view('/add-post', 'back.pages.add-post')->name('add-post');
+            Route::post('/create', [AuthorController::class, 'createPost'])->name('create');
         });
     });
 });

@@ -251,7 +251,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item active dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown"
                                 data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span

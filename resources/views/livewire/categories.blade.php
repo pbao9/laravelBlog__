@@ -4,10 +4,10 @@
             <div class="card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
-                        <h2>Categories</h2>
+                        <h2>Danh mục</h2>
                         <li class="nav-item ms-auto">
                             <a href="" class="btn btn-sn btn-primary mb-3" data-bs-toggle="modal"
-                                data-bs-target="#categories_modal">Add Category</a>
+                                data-bs-target="#categories_modal">Thêm danh mục</a>
                         </li>
                     </ul>
                 </div>
@@ -16,8 +16,8 @@
                         <table class="table table-vcenter card-table">
                             <thead>
                                 <tr>
-                                    <th>Categoires Name</th>
-                                    <th>N. of Subcategories</th>
+                                    <th>Tên danh mục</th>
+                                    <th>Tổng danh mục con</th>
                                     <th class="w-1"></th>
                                 </tr>
                             </thead>
@@ -54,10 +54,10 @@
             <div class="card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
-                        <h2>SubCategories</h2>
+                        <h2>Danh mục con</h2>
                         <li class="nav-item ms-auto">
                             <a href="" class="btn btn-sn btn-primary mb-3" data-bs-toggle="modal"
-                                data-bs-target="#subcategories_modal">Add SubCategory</a>
+                                data-bs-target="#subcategories_modal">Thêm danh mục con</a>
                         </li>
                     </ul>
                 </div>
@@ -66,9 +66,9 @@
                         <table class="table table-vcenter card-table">
                             <thead>
                                 <tr>
-                                    <th>SubCategoires Name</th>
-                                    <th>Parent Category</th>
-                                    <th>N. of post</th>
+                                    <th>Danh mục con</th>
+                                    <th>Danh mục cha</th>
+                                    <th>Tổng bài</th>
                                     <th class="w-1"></th>
                                 </tr>
                             </thead>
@@ -111,7 +111,7 @@
             @else
             wire:submit.prevent='addCategory()' @endif>
                 <div class="modal-header">
-                    <h5 class="modal-title">{{ $updateCategoryMode ? 'Update Category' : 'Add Category' }}</h5>
+                    <h5 class="modal-title">{{ $updateCategoryMode ? 'Cập nhật danh mục' : 'Thêm danh mục' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -120,7 +120,7 @@
                     @else
                     @endif
                     <div class="mb-3">
-                        <label for="" class="form-label">Category name</label>
+                        <label for="" class="form-label">Tên danh mục</label>
                         <input type="text" class="form-control" name="example-text-input"
                             placeholder="Enter category name" wire:model='category_name'>
                         <span class="text-danger">
@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn me-auto">Close</button>
+                    <button type="button" class="btn me-auto">Đóng</button>
                     <button type="submit"
                         class="btn btn-primary">{{ $updateCategoryMode ? 'Update' : 'Save' }}</button>
                 </div>
@@ -147,7 +147,8 @@
                 @if ($updateSubCategoryMode) wire:submit.prevent='updateSubCategory()'
             @else wire:submit.prevent='addSubCategory()' @endif>
                 <div class="modal-header">
-                    <h5 class="modal-title">{{ $updateSubCategoryMode ? 'Update SubCategory' : 'Add SubCategory' }}</h5>
+                    <h5 class="modal-title">{{ $updateSubCategoryMode ? 'Update SubCategory' : 'Thêm danh mục con' }}
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -191,7 +192,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
     document.addEventListener('livewire:load', function() {
         Livewire.on('show-toast', function(data) {
             Toastify({
@@ -205,4 +206,4 @@
             }).showToast();
         });
     });
-</script>
+</script> --}}

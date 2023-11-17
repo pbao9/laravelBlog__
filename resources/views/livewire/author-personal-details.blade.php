@@ -47,7 +47,7 @@
     </form>
 </div>
 
-<script>
+{{-- <script>
     document.addEventListener('livewire:load', function() {
         Livewire.on('show-toast', function(data) {
             Toastify({
@@ -61,4 +61,4 @@
             }).showToast();
         });
     });
-</script>
+</script> --}}
