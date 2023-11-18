@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Post;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
 
 class AllPosts extends Component
 {
@@ -12,6 +13,8 @@ class AllPosts extends Component
     public $perpage = 8;
     public $search = null;
     public $orderBy = 'asc';
+
+    protected $listeners = ['deletePostAction'];
 
     public function mount()
     {
@@ -21,6 +24,42 @@ class AllPosts extends Component
     public function updatingSearch()
     {
         $this->resetPage();
+    }
+
+    public function deletePost($id)
+    {
+        $this->dispatchBrowserEvent('deletePost', [
+            'title' => 'Ban co chac khoong?',
+            'html' => 'Ban muon muon xoa bai nay.',
+            'id' => $id,
+        ]);
+    }
+
+    public function deletePostAction($id)
+    {
+        $post = Post::find($id);
+        $path = "images/post_images/";
+        $featured_image = $post->featured_image;
+
+        if ($featured_image != null && Storage::disk('public')->exists($path . $featured_image)) {
+            if (Storage::disk('public')->exists($path . 'thumbnail/resized_' . $featured_image)) {
+                Storage::disk('public')->delete($path . 'thumbnail/resized_' . $featured_image);
+            }
+            if (Storage::disk('public')->exists($path . 'thumbnail/thumb_' . $featured_image)) {
+                Storage::disk('public')->delete($path . 'thumbnail/thumb_' . $featured_image);
+            }
+
+            Storage::disk('public')->delete($path . $featured_image);
+        }
+
+        $delete_post = $post->delete();
+
+
+        if ($delete_post) {
+            $this->emit('show-toast', ['message' => 'Da xoa bai viet thanh cong!']);
+        } else {
+            $this->emit('show-toast', ['message' => 'Khong thanh cong!']);
+        }
     }
 
     public function render()

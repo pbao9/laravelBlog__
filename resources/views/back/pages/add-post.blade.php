@@ -93,8 +93,6 @@
                     console.error(error);
                 });
         });
-    </script>
-    <script>
         document.addEventListener("DOMContentLoaded", function() {
             var showToast = "{{ session('show-toast') }}";
             if (showToast) {
