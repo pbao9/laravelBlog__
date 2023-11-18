@@ -48,6 +48,7 @@
     @livewireScripts
     @stack('scripts')
     <script src="./back/dist/js/demo.min.js?1684106062" defer></script>
+
 </body>
 
 </html>

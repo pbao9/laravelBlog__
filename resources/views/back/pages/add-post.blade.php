@@ -1,6 +1,11 @@
 @extends('back.layouts.pages-layout')
 @section('pageTitle', isset($pageTitle) ? $pageTitle : 'Thêm bài viết')
 @section('content')
+    <style>
+        .ck-editor__editable {
+            min-height: 200px;
+        }
+    </style>
     <div class="page-header d-print-none">
         <div class="container-xl">
             <div class="row g-2 align-items-center">
@@ -31,9 +36,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Nội dung bài viết </label>
-                            <textarea class="form-control" name="post_content" rows="6" placeholder="Nội dung">
-                                
-                            </textarea>
+                            <textarea class="form-control" id="post_content" name="post_content" rows="6" placeholder="Nội dung"></textarea>
                             <span class="text-danger">
                                 @error('post_content')
                                     {{ $message }}
@@ -80,20 +83,31 @@
     </form>
 @endsection
 
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var showToast = "{{ session('show-toast') }}";
-        if (showToast) {
-            Toastify({
-                text: showToast,
-                duration: 3000,
-                gravity: "top",
-                position: "right",
-                stopOnFocus: true,
-                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
-                className: "info",
-            }).showToast();
-        }
-    });
-</script>
+@push('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            ClassicEditor
+                .create(document.querySelector('#post_content'))
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var showToast = "{{ session('show-toast') }}";
+            if (showToast) {
+                Toastify({
+                    text: showToast,
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    stopOnFocus: true,
+                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                    className: "info",
+                }).showToast();
+            }
+        });
+    </script>
+@endpush

@@ -244,7 +244,7 @@
                                             Thêm bài viết mới!
                                             <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Mới</span>
                                         </a>
-                                        <a class="dropdown-item" href="./cookie-banner.html">
+                                        <a class="dropdown-item" href="{{ route('author.posts.all_posts') }}">
                                             Tất cả bài post
                                         </a>
                                     </div>

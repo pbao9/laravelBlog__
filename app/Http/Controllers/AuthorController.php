@@ -13,6 +13,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 
+use  Intervention\Image\Facades\Image;
+
+
 use Illuminate\Support\Facades\Session;
 
 use function Symfony\Component\String\b;
@@ -48,6 +51,9 @@ class AuthorController extends Controller
             'featured_image' => 'required|mimes:jpeg,jpg,png|max:2048',
         ]);
 
+
+
+
         if ($request->hasFile('featured_image')) {
             $path = "images/post_images/";
             $file = $request->file('featured_image');
@@ -55,6 +61,19 @@ class AuthorController extends Controller
             $new_filename = time() . '_' . $filename;
 
             $upload = Storage::disk('public')->put($path . $new_filename, (string) file_get_contents($file));
+
+            $post_thumbnail_path = $path . 'thumbnail'; // Change 'thumbnails' to 'thumbnail'
+            if (!Storage::disk('public')->exists($post_thumbnail_path)) {
+                Storage::disk('public')->makeDirectory($post_thumbnail_path, 0755, true, true);
+            }
+
+            Image::make(storage_path('app/public/' . $path . $new_filename))
+                ->fit(200, 200)
+                ->save(storage_path('app/public/' . $path . 'thumbnail/' . 'thumb_' . $new_filename));
+
+            Image::make(storage_path('app/public/' . $path . $new_filename))
+                ->fit(500, 350)
+                ->save(storage_path('app/public/' . $path . 'thumbnail/' . 'resized_' . $new_filename));
 
             if ($upload) {
                 $post = new Post();
@@ -65,6 +84,9 @@ class AuthorController extends Controller
                 $post->post_content = $request->post_content;
                 $post->featured_image = $new_filename;
                 $saved = $post->save();
+
+
+
 
                 if ($saved) {
                     session()->flash('show-toast', 'Đã thêm bài viết thành công!');

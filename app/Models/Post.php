@@ -17,4 +17,13 @@ class Post extends Model
         'post_content',
         'featured_image',
     ];
+
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('post_title', 'like', $term);
+        });
+    }
 }
