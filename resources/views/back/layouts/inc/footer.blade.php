@@ -4,9 +4,7 @@
             <div class="col-12 col-lg-auto mt-3 mt-lg-0">
                 <ul class="list-inline list-inline-dots mb-0">
                     <li class="list-inline-item">
-                        Copyright &copy; cuối 2023
-                        <a href="." class="link-secondary">Bảo Khánh</a>.
-                        Deadline 2023
+                        Copyright &copy; 2023
                     </li>
                     <li class="list-inline-item">
                         <a href="./changelog.html" class="link-secondary" rel="noopener">
