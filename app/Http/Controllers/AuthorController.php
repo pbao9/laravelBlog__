@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 
-
+use Illuminate\Support\Facades\Session;
 
 
 class AuthorController extends Controller
@@ -67,11 +67,16 @@ class AuthorController extends Controller
 
                 if ($saved) {
                     // $this->emit('show-toast', ['message' => 'Đã thêm thành công!']);
+                    Session::flash('toast', 'Đã thêm thành công!');
                 } else {
                     // $this->emit('show-toast', ['message' => 'Lỗi cmnr!']);
+                    Session::flash('toast', 'Lỗi cmnr!');
                 }
             } else {
+                Session::flash('toast', 'Lỗi khi tải ảnh lên!');
             }
+
+            return redirect()->route('posts.add-post');
         }
     }
 }
