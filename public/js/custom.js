@@ -11,6 +11,19 @@ document.addEventListener("livewire:load", function () {
         }).showToast();
     });
 });
+document.addEventListener("livewire:load", function () {
+    Livewire.on("show-toast-error", function (data) {
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            gravity: "top",
+            position: "right",
+            stopOnFocus: true,
+            backgroundColor: "linear-gradient(to right, #ff0000, #ffbb00)",
+            className: "info",
+        }).showToast();
+    });
+});
 
 var loadFile = function (event) {
     var featured_image = document.getElementById("image-preview");

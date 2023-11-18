@@ -30,10 +30,12 @@
                                         </td>
                                         <td>
                                             <div class="btn-group">
-                                                <a href="#" class="btn btn-sm btn-primary"data-bs-toggle="modal"
-                                                    data-bs-target="#categories_modal"
-                                                    wire:click.prevent='editCategory({{ $category->id }})'>Chỉnh sửa</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Xoá</a>
+                                                <a href="#" class="btn btn-sm btn-primary"
+                                                    wire:click.prevent='editCategory({{ $category->id }})'>Chỉnh
+                                                    sửa</a>&nbsp;
+                                                <a href="#"
+                                                    wire:click.prevent='deleteCategory({{ $category->id }})'
+                                                    class="btn btn-sm btn-danger">Xoá</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -82,8 +84,11 @@
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#subcategories_modal"
-                                                    wire:click.prevent='editSubCategory({{ $subcategory->id }})'>Edit</a>
-                                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                                    wire:click.prevent='editSubCategory({{ $subcategory->id }})'>Chinh
+                                                    sua</a>&nbsp;
+                                                <a href="#"
+                                                    wire:click.prevent='deleteSubCategory({{ $subcategory->id }})'
+                                                    class="btn btn-sm btn-danger">Xoa</a>
                                             </div>
                                         </td>
                                 </tr>
@@ -191,19 +196,3 @@
         </div>
     </div>
 </div>
-
-{{-- <script>
-    document.addEventListener('livewire:load', function() {
-        Livewire.on('show-toast', function(data) {
-            Toastify({
-                text: data.message,
-                duration: 3000,
-                gravity: 'top',
-                position: 'right',
-                stopOnFocus: true,
-                backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
-                className: 'info',
-            }).showToast();
-        });
-    });
-</script> --}}

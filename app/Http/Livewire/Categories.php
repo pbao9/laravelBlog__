@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Post;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\SubCategory;
@@ -13,17 +14,21 @@ class Categories extends Component
 
     public $category_name;
     public $selected_category_id;
-    public $updateCategoryMode = false;
+
 
     public $subcategory_name;
 
     public  $parent_category;
     public $selected_subcategory_id;
+    public $updateCategoryMode = false;
     public $updateSubCategoryMode = false;
 
 
+
     protected $listeners = [
-        'resetModalForm'
+        'resetModalForm',
+        'deleteCategoryAction',
+        'deleteSubCategoryAction'
     ];
 
     public function resetModalForm()
@@ -47,6 +52,7 @@ class Categories extends Component
         if ($saved) {
             $this->dispatchBrowserEvent('hideCategoriesModal');
             $this->category_name = null;
+
             $this->emit('show-toast', ['message' => 'Đã thêm mới danh mục thành công!']);
         } else {
             $this->emit('show-toast', ['message' => 'Đã xảy ra lỗi!']);
@@ -121,33 +127,6 @@ class Categories extends Component
         $this->dispatchBrowserEvent('showSubCategoriesModal');
     }
 
-
-
-    // public function updateSubCategory()
-    // {
-    //     if ($this->selected_subcategory_id) {
-    //         $this->validate([
-    //             'parent_category' => 'required',
-    //             'subcategory_name' => 'required|unique:sub_categories,subcategory_name',
-    //             $this->selected_category_id,
-    //         ]);
-
-    //         $subcategory = SubCategory::findOrFail($this->selected_subcategory_id);
-    //         $subcategory->subcategory_name = $this->subcategory_name;
-    //         $subcategory->slug = Str::slug($this->subcategory_name);
-    //         $subcategory->parent_category = $this->parent_category;
-    //         $updated = $subcategory->save();
-
-    //         if ($updated) {
-    //             $this->dispatchBrowserEvent('hideSubCategoriesModal');
-    //             $this->updateSubCategoryMode = false;
-    //             $this->emit('show-toast', ['message' => 'Da chinh sua danh muc con thanh cong!']);
-    //         } else {
-    //             $this->emit('show-toast', ['message' => 'Da xay ra loi!']);
-    //         }
-    //     }
-    // }
-
     public function updateSubCategory()
     {
         if ($this->selected_subcategory_id) {
@@ -169,6 +148,55 @@ class Categories extends Component
             } else {
                 $this->emit('show-toast', ['message' => 'Đã xảy ra lỗi!']);
             }
+        }
+    }
+
+    public function deleteSubCategory($id)
+    {
+        $subcategory = SubCategory::find($id);
+        $this->dispatchBrowserEvent('deleteSubCategory', [
+            'title' => 'Ban co chac khong?',
+            'html' => 'Ban muon xoa <b>' . $subcategory->subcategory_name . '</b> khoi danh muc?',
+            'id' => $id
+        ]);
+    }
+    public function deleteCategory($id)
+    {
+        $category = Category::find($id);
+        $this->dispatchBrowserEvent('deleteCategory', [
+            'title' => 'Ban co chac khong?',
+            'html' => 'Ban muon xoa <b>' . $category->category_name . '</b> khoi danh muc?',
+            'id' => $id
+        ]);
+    }
+
+    public function deleteCategoryAction($id)
+    {
+        $category = Category::where('id', $id)->first();
+        $subcategories = SubCategory::where('parent_category', $category->id)->whereHas('posts')->with('posts')->get();
+
+        if (!empty($subcategories) && count($subcategories) > 0) {
+            $totalPosts = 0;
+            foreach ($subcategories as $subcat) {
+                $totalPosts += Post::where('category_id', $subcat->id)->get()->count();
+            }
+            $this->emit('show-toast-error', ['message' => 'Danh muc nay co (' . $totalPosts . ') bai viet, khong the xoa!']);
+        } else {
+            Subcategory::where('parent_category', $category->id)->delete();
+            $category->delete();
+            $this->emit('show-toast', ['message' => 'Da xoa thanh cong']);
+        }
+    }
+    public function deleteSubCategoryAction($id)
+    {
+        $subcategory = SubCategory::where('id', $id)->first();
+        $posts = Post::where('category_id', $subcategory->id)->get()->toArray();
+
+        if (!empty($posts) && count($posts) > 0) {
+            $this->emit('show-toast-error', ['message' => 'Danh muc con nay co (' . count($posts) . ') bai viet, khong the xoa!']);
+        } else {
+            $subcategory->delete();
+            $this->emit('show-toast', ['message' => 'Da xoa danh muc con thanh cong!']);
         }
     }
 
