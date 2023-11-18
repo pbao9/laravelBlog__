@@ -44,7 +44,7 @@ class AuthorController extends Controller
         $request->validate([
             'post_title' => 'required|unique:posts,post_title',
             'post_content' => 'required',
-            'post_category' => 'required|exists:categories,id',
+            'post_category' => 'required|exists:sub_categories,id',
             'featured_image' => 'required|mimes:jpeg,jpg,png|max:2048',
         ]);
 
