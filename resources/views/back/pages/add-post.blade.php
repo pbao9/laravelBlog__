@@ -46,8 +46,8 @@
                             <div class="form-label">Danh mục</div>
                             <select class="form-select" name="post_category">
                                 <option value="">Không có dữ liệu</option>
-                                @foreach (\App\Models\SubCategory::all() as $category)
-                                    <option value="{{ $category->id }}">{{ $category->subcategory_name }}</option>
+                                @foreach (\App\Models\SubCategory::all() as $subcategory)
+                                    <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger">
@@ -79,3 +79,21 @@
         </div>
     </form>
 @endsection
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var showToast = "{{ session('show-toast') }}";
+        if (showToast) {
+            Toastify({
+                text: showToast,
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                className: "info",
+            }).showToast();
+        }
+    });
+</script>

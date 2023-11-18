@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Session;
 
+use function Symfony\Component\String\b;
 
 class AuthorController extends Controller
 {
@@ -66,17 +67,14 @@ class AuthorController extends Controller
                 $saved = $post->save();
 
                 if ($saved) {
-                    // $this->emit('show-toast', ['message' => 'Đã thêm thành công!']);
-                    Session::flash('toast', 'Đã thêm thành công!');
+                    session()->flash('show-toast', 'Đã thêm bài viết thành công!');
+                    return back();
                 } else {
-                    // $this->emit('show-toast', ['message' => 'Lỗi cmnr!']);
-                    Session::flash('toast', 'Lỗi cmnr!');
+                    session()->flash('show-toast', 'Lỗi cmnr');
                 }
             } else {
-                Session::flash('toast', 'Lỗi khi tải ảnh lên!');
+                return back()->with('show-toast', 'Đã xảy ra lỗi khi upload hình ảnh');
             }
-
-            return redirect()->route('posts.add-post');
         }
     }
 }
