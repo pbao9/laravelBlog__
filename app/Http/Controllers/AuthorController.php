@@ -102,7 +102,7 @@ class AuthorController extends Controller
             $post = Post::find(request()->post_id);
             $data = [
                 'post' => $post,
-                'pageTitle' => 'Chinh sua bai viet',
+                'pageTitle' => 'Chỉnh sửa bài viết',
             ];
             return view('back.pages.edit_post', $data);
         }

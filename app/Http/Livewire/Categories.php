@@ -155,8 +155,8 @@ class Categories extends Component
     {
         $subcategory = SubCategory::find($id);
         $this->dispatchBrowserEvent('deleteSubCategory', [
-            'title' => 'Ban co chac khong?',
-            'html' => 'Ban muon xoa <b>' . $subcategory->subcategory_name . '</b> khoi danh muc?',
+            'title' => 'Bạn có chắc không?',
+            'html' => 'Bạn muỗn xoá <b>' . $subcategory->subcategory_name . '</b> khỏi danh mục?',
             'id' => $id
         ]);
     }
@@ -164,8 +164,8 @@ class Categories extends Component
     {
         $category = Category::find($id);
         $this->dispatchBrowserEvent('deleteCategory', [
-            'title' => 'Ban co chac khong?',
-            'html' => 'Ban muon xoa <b>' . $category->category_name . '</b> khoi danh muc?',
+            'title' => 'Bạn có chắc không?',
+            'html' => 'Bạn muốn xoá <b>' . $category->category_name . '</b> khỏi danh mục?',
             'id' => $id
         ]);
     }
@@ -180,11 +180,11 @@ class Categories extends Component
             foreach ($subcategories as $subcat) {
                 $totalPosts += Post::where('category_id', $subcat->id)->get()->count();
             }
-            $this->emit('show-toast-error', ['message' => 'Danh muc nay co (' . $totalPosts . ') bai viet, khong the xoa!']);
+            $this->emit('show-toast-error', ['message' => 'Danh mục này có (' . $totalPosts . ') bài viết, không thể xoá!']);
         } else {
             Subcategory::where('parent_category', $category->id)->delete();
             $category->delete();
-            $this->emit('show-toast', ['message' => 'Da xoa thanh cong']);
+            $this->emit('show-toast', ['message' => 'Đã xoá thành công!']);
         }
     }
     public function deleteSubCategoryAction($id)
@@ -193,10 +193,10 @@ class Categories extends Component
         $posts = Post::where('category_id', $subcategory->id)->get()->toArray();
 
         if (!empty($posts) && count($posts) > 0) {
-            $this->emit('show-toast-error', ['message' => 'Danh muc con nay co (' . count($posts) . ') bai viet, khong the xoa!']);
+            $this->emit('show-toast-error', ['message' => 'Danh mục này có (' . count($posts) . ') bài viết, không thể xoa']);
         } else {
             $subcategory->delete();
-            $this->emit('show-toast', ['message' => 'Da xoa danh muc con thanh cong!']);
+            $this->emit('show-toast', ['message' => 'Đã xoá thành công!']);
         }
     }
 

@@ -29,8 +29,8 @@ class AllPosts extends Component
     public function deletePost($id)
     {
         $this->dispatchBrowserEvent('deletePost', [
-            'title' => 'Ban co chac khoong?',
-            'html' => 'Ban muon muon xoa bai nay.',
+            'title' => 'Xoá bài viết?',
+            'html' => 'Bạn có chắc rằng xoá bài này không?.',
             'id' => $id,
         ]);
     }
@@ -56,9 +56,9 @@ class AllPosts extends Component
 
 
         if ($delete_post) {
-            $this->emit('show-toast', ['message' => 'Da xoa bai viet thanh cong!']);
+            $this->emit('show-toast', ['message' => 'Đã xoá bài viết thành công!']);
         } else {
-            $this->emit('show-toast', ['message' => 'Khong thanh cong!']);
+            $this->emit('show-toast-error', ['message' => 'Khong thanh cong!']);
         }
     }
 

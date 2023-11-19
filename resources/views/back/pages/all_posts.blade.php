@@ -1,12 +1,12 @@
 @extends('back.layouts.pages-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Tat ca bai viet')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Tất cả bài viết')
 @section('content')
     <div class="page-header d-print-none">
         <div class="container-xl">
             <div class="row g-2 align-items-center">
                 <div class="col">
                     <h2 class="page-title">
-                        Tat ca bai viet
+                        Tất cả bài viết
                     </h2>
                 </div>
             </div>
@@ -26,11 +26,11 @@
                 html: event.detail.html,
                 showCloseButton: true,
                 showCancelButton: true,
-                cancelButtonText: 'Huy',
-                confirmButtonText: 'Xac nhan',
+                cancelButtonText: 'Huỷ',
+                confirmButtonText: 'Xác nhận',
                 cancelButtonColor: '#d33',
                 confirmButtonColor: '#3085d6',
-                width: 300,
+                width: 450,
                 allowOutsideClick: false
             }).then(function(result) {
                 if (result.value) {

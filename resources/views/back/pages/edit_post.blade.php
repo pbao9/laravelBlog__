@@ -11,7 +11,7 @@
             <div class="row g-2 align-items-center">
                 <div class="col">
                     <h2 class="page-title">
-                        Chinh sua bai viet
+                        Chỉnh sửa
                     </h2>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <div class="form-label">Featured image</div>
+                            <div class="form-label">Ảnh</div>
                             <input type="file" class="form-control" name="featured_image" id="input-file"
                                 accept="image/jpeg, image/png, image/jpg" onchange="loadFile(event)"
                                 data-custom-img-attribute='/storage/images/post_images/thumbnail/resized_{{ $post->featured_image }}'>
@@ -78,7 +78,7 @@
                             <img src="{{ asset('storage/images/post_images/thumbnail/resized_' . $post->featured_image) }}"
                                 alt="" class="img-thumbnail" id="image-preview">
                         </div>
-                        <button type="submit" class="btn btn-primary">Hoan tat</button>
+                        <button type="submit" class="btn btn-primary">Cập nhật bài viết</button>
                     </div>
                 </div>
 

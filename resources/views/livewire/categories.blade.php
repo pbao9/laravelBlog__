@@ -84,18 +84,18 @@
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#subcategories_modal"
-                                                    wire:click.prevent='editSubCategory({{ $subcategory->id }})'>Chinh
-                                                    sua</a>&nbsp;
+                                                    wire:click.prevent='editSubCategory({{ $subcategory->id }})'>Chỉnh
+                                                    sửa</a>&nbsp;
                                                 <a href="#"
                                                     wire:click.prevent='deleteSubCategory({{ $subcategory->id }})'
-                                                    class="btn btn-sm btn-danger">Xoa</a>
+                                                    class="btn btn-sm btn-danger">Xoá</a>
                                             </div>
                                         </td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td colspan="4">
-                                        <span class="text-danger">Khong co gi de hien thi!</span>
+                                        <span class="text-danger">Không có danh mục con để hiển thị</span>
                                     </td>
                                 </tr>
                                 @endforelse
@@ -127,7 +127,7 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Tên danh mục</label>
                         <input type="text" class="form-control" name="example-text-input"
-                            placeholder="Enter category name" wire:model='category_name'>
+                            placeholder="Nhập tên danh mục" wire:model='category_name'>
                         <span class="text-danger">
                             @error('category_name')
                                 {{ $message }}
@@ -138,7 +138,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn me-auto">Đóng</button>
                     <button type="submit"
-                        class="btn btn-primary">{{ $updateCategoryMode ? 'Update' : 'Save' }}</button>
+                        class="btn btn-primary">{{ $updateCategoryMode ? 'Cập nhật' : 'Lưu' }}</button>
                 </div>
             </form>
         </div>
@@ -152,7 +152,8 @@
                 @if ($updateSubCategoryMode) wire:submit.prevent='updateSubCategory()'
             @else wire:submit.prevent='addSubCategory()' @endif>
                 <div class="modal-header">
-                    <h5 class="modal-title">{{ $updateSubCategoryMode ? 'Update SubCategory' : 'Thêm danh mục con' }}
+                    <h5 class="modal-title">
+                        {{ $updateSubCategoryMode ? 'Cập nhật danh mục con' : 'Thêm danh mục con' }}
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -161,10 +162,10 @@
                         <input type="hidden" wire:model='selected_subcategory_id'>
                     @endif
                     <div class="mb-3">
-                        <div class="form-label">Parent Category</div>
+                        <div class="form-label">Danh mục cha</div>
                         <select class="form-select" wire:model='parent_category'>
                             @if (!$updateSubCategoryMode)
-                                <option value="">No selected</option>
+                                <option value="">--Trống--</option>
                             @endif
                             @foreach (\App\Models\Category::all() as $category)
                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
@@ -177,9 +178,9 @@
                         </span>
                     </div>
                     <div class="mb-3">
-                        <label for="" class="form-label">SubCategory name</label>
+                        <label for="" class="form-label">Tên danh mục con</label>
                         <input type="text" class="form-control" name="example-text-input"
-                            placeholder="Enter category name" wire:model="subcategory_name" />
+                            placeholder="Nhập tên danh mục con" wire:model="subcategory_name" />
                         <span class="text-danger">
                             @error('subcategory_name')
                                 {{ $message }}
@@ -188,9 +189,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">Đóng</button>
                     <button type="submit"
-                        class="btn btn-primary">{{ $updateSubCategoryMode ? 'Update' : 'Save' }}</button>
+                        class="btn btn-primary">{{ $updateSubCategoryMode ? 'Cập nhật' : 'Lưu' }}</button>
                 </div>
             </form>
         </div>

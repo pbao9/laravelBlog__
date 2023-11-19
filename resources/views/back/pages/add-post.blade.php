@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <div class="form-label">Featured image</div>
+                            <div class="form-label">Ảnh</div>
                             <input type="file" class="form-control" name="featured_image" id="input-file"
                                 accept="image/jpeg, image/png, image/jpg" onchange="loadFile(event)">
                             <span class="text-danger">
@@ -74,7 +74,7 @@
                             <img src="./back/dist/img/authors/default-img.png" alt="" class="img-thumbnail"
                                 id="image-preview">
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
                     </div>
                 </div>
 

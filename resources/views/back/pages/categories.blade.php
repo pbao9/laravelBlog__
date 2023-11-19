@@ -1,5 +1,5 @@
 @extends('back.layouts.pages-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Categories')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Danh mục')
 @section('content')
 
 
@@ -7,7 +7,7 @@
         <div class="row align-items-center">
             <div class="col">
                 <div class="page-title">
-                    Categories & Subcategories
+                    Danh mục cha & danh mục con
                 </div>
             </div>
         </div>
@@ -46,11 +46,11 @@
                 html: event.detail.html,
                 showCloseButton: true,
                 showCancelButton: true,
-                cancelButtonText: 'Huy',
-                confirmButtonText: 'Xac nhan',
+                cancelButtonText: 'Huỷ',
+                confirmButtonText: 'Xác nhận',
                 cancelButtonColor: '#d33',
                 confirmButtonColor: '#3085d6',
-                width: 300,
+                width: 450,
                 allowOutsideClick: false
             }).then(function(result) {
                 if (result.value) {
@@ -66,11 +66,11 @@
                 html: event.detail.html,
                 showCloseButton: true,
                 showCancelButton: true,
-                cancelButtonText: 'Huy',
-                confirmButtonText: 'Xac nhan',
+                cancelButtonText: 'Huỷ',
+                confirmButtonText: 'Xác nhận',
                 cancelButtonColor: '#d33',
                 confirmButtonColor: '#3085d6',
-                width: 300,
+                width: 450,
                 allowOutsideClick: false
             }).then(function(result) {
                 if (result.value) {
