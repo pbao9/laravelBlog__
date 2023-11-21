@@ -37,9 +37,9 @@ class AuthorChangePasswordForm extends Component
 
         if ($query) {
             $this->current_password = $this->new_password = $this->confirm_new_password = null;
-            $this->emit('show-toast-change-password', ['message' => 'Mật khẩu đã được cập nhật thành công!']);
+            $this->emit('show-toast', ['message' => 'Mật khẩu đã được cập nhật thành công!']);
         } else {
-            $this->emit('show-toast-change-password', ['message' => 'Có sai sót gì ở đây! Vui lòng kiểm tra lại!']);
+            $this->emit('show-toast-error', ['message' => 'Có sai sót gì ở đây! Vui lòng kiểm tra lại!']);
         }
     }
 

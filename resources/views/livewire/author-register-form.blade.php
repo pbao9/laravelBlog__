@@ -1,23 +1,20 @@
 <div>
+    {{-- Because she competes with no one, no one can compete with her. --}}
     @if (Session::get('fail'))
         <div class="alert alert-danger">
             {{ Session::get('fail') }}
         </div>
     @endif
-    @if (Session::get('success'))
-        <div class="alert alert-success">
-            {{ Session::get('success') }}
-        </div>
-    @endif
+
     <div class="card card-md">
         <div class="card-body">
-            <h2 class="h2 text-center mb-4">ĐĂNG NHẬP</h2>
-            <form action="./" method="post" autocomplete="off" novalidate="" wire:submit.prevent="LoginHandler()">
+            <h2 class="h2 text-center mb-4">ĐĂNG KÝ</h2>
+            <form action="./" method="post" autocomplete="off" novalidate="" wire:submit.prevent="registerHandler()">
                 <div class="mb-3">
-                    <label class="form-label">Địa chỉ email & Tên đăng nhập</label>
+                    <label class="form-label">Địa chỉ email đăng ký</label>
                     <input type="email" class="form-control" placeholder="nguyenvana@gmail.com" autocomplete="off"
-                        wire:model="login_id">
-                    @error('login_id')
+                        wire:model="email">
+                    @error('email')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
@@ -25,9 +22,8 @@
                     <label class="form-label">
                         Mật khẩu
                         <span class="form-label-description">
-                            <a href="{{ route('author.forgot-password') }}">Quên mật khẩu</a>
-                        </span>&nbsp;
-
+                            <a href="{{ route('author.login') }}">Đã có tài khoản?</a>
+                        </span>
                     </label>
                     <div class="input-group input-group-flat">
                         <input type="password" class="form-control" placeholder="Mật khẩu" autocomplete="off"
@@ -54,13 +50,9 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-2">
-                    <span class="form-label-description">
-                        <a href="{{ route('author.register') }}">Chưa có tài khoản?</a>
-                    </span>
-                </div>
+
                 <div class="form-footer">
-                    <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+                    <button type="submit" class="btn btn-primary w-100">Đăng ký</button>
                 </div>
             </form>
         </div>
