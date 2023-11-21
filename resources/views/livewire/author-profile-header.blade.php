@@ -17,12 +17,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-auto">
-                <a href="#" class="btn btn-primary">
-                    Đổi ảnh hiển thị
-                </a>
-            </div>
         </div>
     </div>
 </div>

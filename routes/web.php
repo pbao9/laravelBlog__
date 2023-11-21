@@ -24,5 +24,5 @@ use \App\Http\Controllers\AuthorController;
 // });
 
 Route::get('/', function () {
-    return redirect()->route('author.login');
+    return redirect()->route('author.register');
 });

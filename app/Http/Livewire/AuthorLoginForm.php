@@ -47,34 +47,6 @@ class AuthorLoginForm extends Component
         } else {
             session()->flash('fail', 'Sai email/ tên đăng nhập hoặc mật khẩu!');
         }
-
-
-
-
-        // Đăng nhập bằng mỗi email
-        // $this->validate([
-        //     'email' => 'required|email|exists:users,email',
-        //     'password' => 'required|min:5'
-        // ], [
-        //     'email.required' => 'Nhập địa chỉ email của bạn!',
-        //     'email.email' => 'Email không tồn tại',
-        //     'email.exists' => 'Email chưa được đăng ký trong database!',
-        //     'password.required' => 'Vui lòng nhập mật khẩu'
-        // ]);
-
-        // $creds = array('email' => $this->email, 'password' => $this->password);
-        // if (Auth::guard('web')->attempt($creds)) {
-        //     $checkUser = User::where('email', $this->email)->first();
-
-        //     if ($checkUser->blocked == 1) {
-        //         Auth::guard('web')->logout();
-        //         return redirect()->route('author.login')->with('fail', 'Acc của bạn đã bị khoá!');
-        //     } else {
-        //         return redirect()->route('author.home');
-        //     }
-        // } else {
-        //     session()->flash('fail', 'Sai email hoặc mật khẩu, vui lòng nhập lại!');
-        // }
     }
 
 

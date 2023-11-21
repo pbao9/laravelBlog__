@@ -1,5 +1,5 @@
 @extends('back.layouts.auth-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Đăng nhập')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Đăng ký')
 
 @section('content')
 
@@ -9,7 +9,7 @@
                 <a href="." class="navbar-brand navbar-brand-autodark"><img src="./back/static/logo.ico" height="36"
                         alt=""></a>
             </div>
-            @livewire('author-login-form')
+            @livewire('author-register-form')
         </div>
     </div>
 
