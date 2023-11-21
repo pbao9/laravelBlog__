@@ -1,11 +1,14 @@
 <div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
     @if (Session::get('fail'))
         <div class="alert alert-danger">
             {{ Session::get('fail') }}
         </div>
     @endif
-
+    @if (Session::get('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    @endif
     <div class="card card-md">
         <div class="card-body">
             <h2 class="h2 text-center mb-4">ĐĂNG NHẬP</h2>

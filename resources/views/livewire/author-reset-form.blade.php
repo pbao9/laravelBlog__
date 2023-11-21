@@ -26,8 +26,8 @@
                 Mật khẩu mới
             </label>
             <div class="input-group input-group-flat">
-                <input type="password" class="form-control" placeholder="Mật khẩu mới" autocomplete="off">
-
+                <input type="password" class="form-control" placeholder="Mật khẩu mới" autocomplete="off"
+                    wire:model='new_password'>
                 <span class="input-group-text">
                     <a h ref="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Show password"
                         data-bs-original-title="Show password"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
@@ -55,7 +55,6 @@
             <div class="input-group input-group-flat">
                 <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" autocomplete="off"
                     wire:model='confirm_new_password'>
-
                 <span class="input-group-text">
                     <a h ref="#" class="link-secondary" data-bs-toggle="tooltip" aria-label="Show password"
                         data-bs-original-title="Show password"><!-- Download SVG icon from http://tabler-icons.io/i/eye -->
